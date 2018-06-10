@@ -1,0 +1,28 @@
+{
+  "total_count": 2,
+  "incomplete_results": false,
+  "items": [
+    {
+      "name": "CompareCheckerTest.java",
+      "repository": {
+        "id": 1,
+        "name": "playground",
+        "full_name": "admarc/playground",
+        "owner": {
+          "login": "admarc"
+        }
+      }
+    },
+    {
+      "name": "CompareCheckerTest.php",
+      "repository": {
+        "id": 1,
+        "name": "playground",
+        "full_name": "admarc/playground",
+        "owner": {
+          "login": "admarc"
+        }
+      }
+    }
+  ]
+}

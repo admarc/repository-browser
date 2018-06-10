@@ -1,0 +1,4 @@
+find_files:
+    path:      /repositories/{provider}/files
+    controller: app.controller.repository_controller:filesAction
+    methods: ['GET']

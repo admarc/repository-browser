@@ -1,0 +1,40 @@
+parameters:
+    api_version: 'v1'
+    github_endpoint: 'https://api.github.com/search/'
+
+services:
+    _defaults:
+        autowire: false
+        autoconfigure: false
+        public: false
+
+    app.guzzle_http.api_client:
+        class: GuzzleHttp\Client
+        arguments:
+            - { base_uri: 'http://127.0.0.1:8000/api/%api_version%/', http_errors: false }
+        public: true
+
+    app.guzzle_http.github_api_client:
+        class: GuzzleHttp\Client
+        arguments: [ base_uri: '%github_endpoint%' ]
+
+    app.controller.repository_controller:
+        class: App\Controller\RepositoryController
+        arguments: ['@app.interactor.find_files', '@serializer', '@logger']
+        public: true
+        tags:
+            - { name: monolog.logger, channel: rest_api }
+
+    app.interactor.find_files:
+        class: App\Interactor\FindFiles
+
+    app.source_code_repository.provider.github:
+        class: App\SourceCodeRepository\Provider\GitHub
+        arguments: ['@app.guzzle_http.github_api_client', '%env(GITHUB_OAUTH_TOKEN)%']
+        tags:
+            - { name: app.source_code_provider, alias: github }
+
+    app.source_code_repository.validator.search_criteria.provider.github_validator:
+        class: App\SourceCodeRepository\Validator\SearchCriteria\Provider\GithubValidator
+        tags:
+            - { name: app.search_criteria_validator, alias: github }
