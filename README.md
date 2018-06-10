@@ -26,6 +26,12 @@ composer install
 bin/console server:start
 ```
 
+* Run assets generator (it is only needed for API documentation)
+
+```
+bin/console assets:install
+```
+
 * Example usage:
 
 http://your_host/api/v1/repositories/github/files?phrase=CompareChecker (remember that in *test* environment the search is performed on mocked GitHub api)
