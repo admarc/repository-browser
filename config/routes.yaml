@@ -1,0 +1,4 @@
+repositories:
+    resource: './routes/repositories.yaml'
+    type:     yaml
+    prefix:   /api/%api_version%/

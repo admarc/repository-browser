@@ -1,0 +1,9 @@
+.env
+/public/bundles/
+/var/
+/vendor/
+behat.yml
+.web-server-pid
+.php_cs
+.php_cs.cache
+.idea/
